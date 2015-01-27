@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.codice.testify</groupId>
         <artifactId>testify-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
     <artifactId>testify-core</artifactId>
