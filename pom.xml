@@ -25,14 +25,15 @@
     </parent>
 
     <artifactId>testify-core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Testify Core Framework</name>
 
     <scm>
         <connection>scm:git:https://github.com/testify/testify-core.git</connection>
         <developerConnection>scm:git:https://github.com/testify/testify-core.git</developerConnection>
         <url>https://github.com/testify/testify-core.git</url>
-    </scm>
+      <tag>testify-core-0.0.1</tag>
+  </scm>
 
     <dependencies>
         <dependency>
