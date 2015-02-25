@@ -44,6 +44,43 @@ public class TestPropertiesTest {
     }
 
     @Test
+    public void testRemoveExistingProperty() {
+        TestProperties testProperties = new TestProperties();
+        testProperties.addProperty("property", "value");
+        testProperties.removeProperty("property");
+        assert ( !testProperties.propertyExists("property") );
+    }
+    @Test
+    public void testRemoveNonExistingProperty() {
+        TestProperties testProperties = new TestProperties();
+        testProperties.removeProperty("property");
+        assert ( !testProperties.propertyExists("property") );
+    }
+
+    @Test
+    public void testReplaceExistingProperty() {
+        TestProperties testProperties = new TestProperties();
+        testProperties.addProperty("property", "value");
+        testProperties.replaceProperty("property", "new value");
+        assert ( testProperties.getFirstValue("property") == "new value");
+    }
+
+    @Test
+    public void testReplaceNonExistingProperty() {
+        TestProperties testProperties = new TestProperties();
+        testProperties.replaceProperty("property", "new value");
+        assert ( testProperties.getFirstValue("property") == "new value");
+    }
+
+    @Test
+    public void testGetLastValue() {
+        TestProperties testProperties = new TestProperties();
+        testProperties.addProperty("property", "value1");
+        testProperties.addProperty("property", "value2");
+        assert ( testProperties.getLastValue("property") == "value2" );
+    }
+
+    @Test
     public void testGetPropertyNames(){
         TestProperties testProperties = new TestProperties();
         Set<String> properties = new HashSet<>(Arrays.asList("Property1", "Property2", "Property3"));
