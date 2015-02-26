@@ -42,6 +42,17 @@ public class TestProperties {
     }
 
     /**
+     * The getLastValue method returns the last value that matches a property name
+     * @param propertyName the name of the property
+     * @return the last value found
+     */
+    public String getLastValue( String propertyName ) {
+
+        // Retrieve the list of values under the given property name
+        List<String> props = properties.get( propertyName );
+        return getValue(propertyName, props.size() - 1);
+    }
+    /**
      * The getValue method returns a property value given a property name and an index
      * @param propertyName the name of the property
      * @param index the index of the value under that property name
@@ -100,6 +111,28 @@ public class TestProperties {
      */
     public void addProperties( String propertyName, List<String> values ){
         properties.put( propertyName, values );
+    }
+
+    /**
+     * The removeProperty method removes a property from TestProperties if it exists
+     * @param propertyName the name of the property
+     */
+    public void removeProperty( String propertyName ) {
+        if ( properties.containsKey( propertyName ) ) {
+            properties.remove( propertyName );
+        }
+    }
+
+    /**
+     * the replaceProperty method replaces a property with a new one
+     * @param propertyName the name of the property
+     * @param value the value of the property
+     */
+    public void replaceProperty( String propertyName, String value ) {
+        // First remove property if it already exists
+        removeProperty(propertyName);
+        // Add new property
+        addProperty(propertyName, value);
     }
 
     /**
