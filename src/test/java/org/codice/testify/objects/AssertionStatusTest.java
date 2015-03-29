@@ -14,28 +14,28 @@
  *    limitations under the License.
  */
 
-package org.codice.testify;
+package org.codice.testify.objects;
 
-import org.codice.testify.objects.Result;
+import org.codice.testify.objects.AssertionStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import java.util.LinkedHashMap;
 
 @RunWith(JUnit4.class)
-public class ResultTest {
+public class AssertionStatusTest {
 
     @Test
-    public void testGetTestResult() {
-        Result result = new Result(true, null);
-        assert ( result.getTestResult() );
+    public void testAssertionSuccess() {
+        AssertionStatus assertionStatus = new AssertionStatus(null);
+        assert ( assertionStatus.getFailureDetails().equals("Success") );
+        assert ( assertionStatus.isSuccess() );
     }
 
     @Test
-    public void testGetAssertionResults() {
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        Result result = new Result(false, map);
-        assert ( result.getAssertionResults().equals(map) );
+    public void testAssertionFailure() {
+        AssertionStatus assertionStatus = new AssertionStatus("Failure Details");
+        assert ( assertionStatus.getFailureDetails().equals("Failure Details") );
+        assert ( !assertionStatus.isSuccess() );
     }
 
 }

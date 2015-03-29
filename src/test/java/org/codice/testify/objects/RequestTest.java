@@ -14,34 +14,32 @@
  *    limitations under the License.
  */
 
-package org.codice.testify;
+package org.codice.testify.objects;
 
-import org.codice.testify.objects.ParsedData;
-import org.codice.testify.objects.TestData;
+import org.codice.testify.objects.Request;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class TestDataTest {
+public class RequestTest {
 
     @Test
-    public void testGetTestName() {
-        TestData testData = new TestData("Test Name", null, "Result Folder");
-        assert ( testData.getTestName().equals("Test Name") );
+    public void testGetType() {
+        Request request = new Request("Test Type", "Test Endpoint", "Test Test Block");
+        assert ( request.getType().equals("Test Type") );
     }
 
     @Test
-    public void testGetParsedData() {
-        ParsedData parsedData = new ParsedData(null,null,null);
-        TestData testData = new TestData("Test Name", parsedData, "Result Folder");
-        assert ( testData.getParsedData().equals(parsedData) );
+    public void testGetEndpoint() {
+        Request request = new Request("Test Type", "Test Endpoint", "Test Test Block");
+        assert ( request.getEndpoint().equals("Test Endpoint") );
     }
 
     @Test
-    public void testGetResultFolder() {
-        TestData testData = new TestData("Test Name", null, "Result Folder");
-        assert ( testData.getResultFolder().equals("Result Folder") );
+    public void testGetTestBlock() {
+        Request request = new Request("Test Type", "Test Endpoint", "Test Test Block");
+        assert ( request.getTestBlock().equals("Test Test Block") );
     }
 
 }

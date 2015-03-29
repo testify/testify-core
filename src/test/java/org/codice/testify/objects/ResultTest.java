@@ -14,32 +14,28 @@
  *    limitations under the License.
  */
 
-package org.codice.testify;
+package org.codice.testify.objects;
 
-import org.codice.testify.objects.Request;
+import org.codice.testify.objects.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import java.util.LinkedHashMap;
 
 @RunWith(JUnit4.class)
-public class RequestTest {
+public class ResultTest {
 
     @Test
-    public void testGetType() {
-        Request request = new Request("Test Type", "Test Endpoint", "Test Test Block");
-        assert ( request.getType().equals("Test Type") );
+    public void testGetTestResult() {
+        Result result = new Result(true, null);
+        assert ( result.getTestResult() );
     }
 
     @Test
-    public void testGetEndpoint() {
-        Request request = new Request("Test Type", "Test Endpoint", "Test Test Block");
-        assert ( request.getEndpoint().equals("Test Endpoint") );
-    }
-
-    @Test
-    public void testGetTestBlock() {
-        Request request = new Request("Test Type", "Test Endpoint", "Test Test Block");
-        assert ( request.getTestBlock().equals("Test Test Block") );
+    public void testGetAssertionResults() {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        Result result = new Result(false, map);
+        assert ( result.getAssertionResults().equals(map) );
     }
 
 }

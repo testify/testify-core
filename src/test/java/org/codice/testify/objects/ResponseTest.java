@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package org.codice.testify;
+package org.codice.testify.objects;
 
 import org.codice.testify.objects.Response;
 import org.junit.Test;
