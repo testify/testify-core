@@ -42,9 +42,10 @@ public class FelixBuilder {
 
         //Get path of Testify jar and set the deploy directory path
         File deployDir = null;
+        File testifyHome = null;
         try {
             File f = new File(FelixBuilder.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-            File testifyHome = f.getParentFile().getParentFile();
+            testifyHome = f.getParentFile().getParentFile();
             deployDir = new File(testifyHome.toString() + File.separator + "bundles");
             TestifyLogger.debug("The deploy directory is set to: " + deployDir, this.getClass().getSimpleName());
         } catch (URISyntaxException e) {
@@ -56,6 +57,9 @@ public class FelixBuilder {
 
         //Set felix cache behavior
         configMap.put("org.osgi.framework.storage.clean", "onFirstInit");
+
+        //Set felix cache directory
+        configMap.put("org.osgi.framework.storage", testifyHome + File.separator + "testify-cache");
 
         //Add system packages that will be available to other bundles
         configMap.put(Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA, "org.codice.testify.actions," + "org.codice.testify.assertions," + "org.codice.testify.objects," + "org.codice.testify.propertiesParsers," + "org.codice.testify.testParsers," + "org.codice.testify.processors," + "org.codice.testify.writers," + "org.apache.log4j");
