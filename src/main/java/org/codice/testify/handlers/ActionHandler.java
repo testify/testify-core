@@ -50,7 +50,7 @@ public class ActionHandler {
             if (actionComponents.length > 1) {
                 actionInfo = actionComponents[1];
             }
-            TestifyLogger.debug("Looking for Action: " + actionComponents[0] + " and passing action info: " + actionInfo, this.getClass().getSimpleName());
+            TestifyLogger.debug("Looking for Action: " + actionComponents[0].trim() + " and passing action info: " + actionInfo, this.getClass().getSimpleName());
 
             //Set a match boolean to check if any services match the test file action
             boolean match = false;
@@ -61,7 +61,7 @@ public class ActionHandler {
                 TestifyLogger.debug("Comparing Action Service: " + ((Action) actionService).getClass().getSimpleName(), this.getClass().getSimpleName());
 
                 //If the name of the action service matches the action in the test file, run the action and return true
-                if (((Action)actionService).getClass().getSimpleName().equalsIgnoreCase(actionComponents[0])) {
+                if (((Action)actionService).getClass().getSimpleName().equalsIgnoreCase(actionComponents[0].trim())) {
                     ((Action)actionService).executeAction(actionInfo);
                     match = true;
                 }
@@ -69,7 +69,7 @@ public class ActionHandler {
 
             //If there is no match, let the user know
             if (!match) {
-                TestifyLogger.error("No Action Services with name: " + actionComponents[0], this.getClass().getSimpleName());
+                TestifyLogger.error("No Action Services with name: " + actionComponents[0].trim(), this.getClass().getSimpleName());
             }
         }
     }
